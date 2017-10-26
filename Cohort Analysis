@@ -1,0 +1,108 @@
+select "creation_ym","RealMoney_ym",count(distinct "accountId") as "customers",sum("revenue")
+from
+(
+select b.*,a."creation_ym"
+from
+(
+Select "accountId",
+EXTRACT(YEAR FROM ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles'))*100+EXTRACT(MONTH FROM ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles')) as "creation_ym"
+from 
+adu."accounts"
+where ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles')::date between '2015-01-01' and current_date-1
+group by 1,2
+)a
+inner join
+(
+Select 
+"accountId",
+EXTRACT(YEAR FROM "helperDate")*100+EXTRACT(MONTH FROM "helperDate") as "RealMoney_ym",sum("revenue") as "revenue"
+from reportspg."dailyUserRevenue" a 
+inner join reportspg."timeHelpersPst" b 
+on a."purchaseTimePstId" = b."timeHelperId"
+where "isRealMoneyUsed" = 't' 
+and "helperDate" >= '2015-01-01'
+group by 1,2
+)b
+on a."accountId"=b."accountId" and a. "creation_ym"<=b."RealMoney_ym"
+)c
+group by 1,2
+
+-------------------------------------created every month--------------------------------------------------------
+
+select creation_ym,count(*) as "customers"
+from
+(
+select "accountId",
+EXTRACT(YEAR FROM ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles'))*100+EXTRACT(MONTH FROM ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles')) as creation_ym
+from adu."accounts"
+where ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles') between '2015-01-01' and current_date-1
+)a
+group by creation_ym
+
+--------------------------------------by device-----------------------------------------------------------------
+
+select "creation_ym","Platform","RealMoney_ym",count(distinct "accountId") as "customers",sum("revenue") as "revenue"
+from
+(
+select b.*,a."creation_ym",a."Platform"
+from
+(
+Select "accountId",
+(case when "accountCreationDoorstep" in ('web') then 'Web'
+      when "accountCreationDoorstep" in ('android','androidHd','iosApp','ipad','iphone','ipod') then 'Mobile'
+      when "accountCreationDoorstep" in ('SPS3DEV1','SPS4DEV1','xbox','xboxOne') then 'Game Console'
+	  else 'LUA Doorstep' end) as "Platform",
+EXTRACT(YEAR FROM ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles'))*100+EXTRACT(MONTH FROM ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles')) as "creation_ym"
+from 
+reportspg."accountDetails"
+where ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles')::date between '2015-01-01' and current_date-1
+and "FirstPaidPurchaseTimestampPST" is not null
+)a
+inner join
+(
+Select 
+"accountId",
+b."yearNumber"*100+b."monthNumber" as "RealMoney_ym",sum("revenue") as "revenue"
+from reportspg."dailyUserRevenue" a 
+inner join reportspg."timeHelpersPst" b 
+on a."purchaseTimePstId" = b."timeHelperId"
+where "isRealMoneyUsed" = 't' 
+and "helperDate" >= '2015-01-01'
+group by 1,2
+)b
+on a."accountId"=b."accountId" and a."creation_ym"<=b."RealMoney_ym"
+)c
+group by 1,2,3
+
+-----------------------------------------by creation channel------------------------------------------------------
+select "creation_ym","creationChannel","RealMoney_ym",count(distinct "accountId") as "customers",sum("revenue") as "revenue"
+from
+(
+select b.*,a."creation_ym",a."creationChannel"
+from
+(
+Select "accountId",
+"creationChannel",
+EXTRACT(YEAR FROM ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles'))*100+EXTRACT(MONTH FROM ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles')) as "creation_ym"
+from 
+reportspg."accountDetails"
+where ("createdTime"::timestamp AT TIME ZONE 'GMT' AT TIME ZONE 'America/Los_Angeles') between '2015-01-01' and current_date-1
+and "FirstPaidPurchaseTimestampPST" is not null
+group by 1,2,3
+)a
+inner join
+(
+Select 
+"accountId",
+b."yearNumber"*100+b."monthNumber" as "RealMoney_ym",sum("revenue") as "revenue"
+from reportspg."dailyUserRevenue" a 
+inner join reportspg."timeHelpersPst" b 
+on a."purchaseTimePstId" = b."timeHelperId"
+where "isRealMoneyUsed" = 't' 
+and "helperDate" >= '2015-01-01'
+group by "accountId",
+"yearNumber"*100+"monthNumber"
+)b
+on a."accountId"=b."accountId" and a."creation_ym"<="RealMoney_ym"
+)c
+group by 1,2,3

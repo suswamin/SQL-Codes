@@ -1,0 +1,57 @@
+
+#### -----------------https://www.hackerrank.com/challenges/binary-search-tree-1/problem
+
+####------------------http://www.sqlfiddle.com/#!15/de50d/51
+
+with base_cte
+as (
+select node ,nodes from 
+(
+select distinct node ,
+case when parent is null then 'parents' end as nodes
+from tree
+) a
+where nodes is not null
+union 
+select 
+distinct a.node, 
+case when a.node=b.parent then 'inner' end as nodes
+from
+(
+  select node,parent from
+   tree
+  ) a
+    join 
+    (select node ,parent from 
+     tree
+       ) b 
+ on a.node=b.parent
+ where a.parent is not null
+ ) 
+ select node , 'leaf' as node  from tree 
+ where node not in ( select node from base_cte) 
+ union 
+ select * from base_cte
+ 
+									*************Another way to do this *******************************
+select distinct node ,
+case when parent is null then 'parent'
+     when node in ( select parent from tree) then 'inner' 
+     else 'leaf' end 
+  from tree 
+  order 
+  
+								*********************Another way to solve the problem **********************
+  SELECT 
+    N,
+    CASE
+        WHEN M IS NULL THEN 'Leaf'
+        WHEN P IS NULL THEN 'Root'
+        ELSE 'Inner'
+    END AS TypeNode
+FROM (
+    SELECT 
+        DISTINCT hijo.*, padre.P as M
+    FROM BST hijo
+    LEFT JOIN BST padre ON (hijo.N = padre.P)
+) ORDER BY N;

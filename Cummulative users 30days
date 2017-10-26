@@ -1,0 +1,75 @@
+"Identify customers active for 30 days .If a customers starts a trial 
+then he is valid for 30 days after which he can get activated by paying which is stored in
+a different table. Activation table will also have customers who can get activated without starting 
+the trial.For a day get the number customers who is active . - 30 days is what the customers will be active
+You have to use activation table too because there will be customers who is not in trial.
+For this we need to use the complete calendar table"
+
+create table trials 
+( 
+  user_id integer,
+  trial_date date
+  ) ;
+  
+  insert into trials values ( 10, '2017-01-01');
+  insert into trials values ( 520, '2017-01-02');
+  insert into trials values (100,'2017-01-20');
+  insert into trials values (21, '2017-02-02');
+  insert into trials values (11, '2017-02-04');
+  insert into trials values ( 4, '2017-02-05');
+  insert into trials values (321,'2017-03-15');
+;
+  
+create table activation 
+(
+user_id integer,
+activation_date date,
+cancellation_date date
+) ;
+
+
+create table test2 
+( date_1 date);
+
+insert into test2 values (' 2017-01-01         ');insert into test2 values (' 2017-01-02         ');insert into test2 values (' 2017-01-03 ');insert into test2 values (' 2017-01-04');
+insert into test2 values (' 2017-01-05         ');insert into test2 values (' 2017-01-06         ');insert into test2 values (' 2017-01-07         ');insert into test2 values (' 2017-01-08         ');
+insert into test2 values (' 2017-01-09         ');insert into test2 values (' 2017-01-10         ');insert into test2 values (' 2017-01-11         ');insert into test2 values (' 2017-01-12         ');insert into test2 values (' 2017-01-13         ');insert into test2 values (' 2017-01-14         ');insert into test2 values (' 2017-01-15         ');insert into test2 values (' 2017-01-16         ');insert into test2 values (' 2017-01-17         ');insert into test2 values (' 2017-01-18         ');insert into test2 values (' 2017-01-19         ');insert into test2 values (' 2017-01-20         ');
+insert into test2 values (' 2017-01-21         ');insert into test2 values (' 2017-01-22         ');insert into test2 values (' 2017-01-23         ');insert into test2 values (' 2017-01-24         ');
+insert into test2 values (' 2017-01-25         ');insert into test2 values (' 2017-01-26         ');insert into test2 values (' 2017-01-27         ');insert into test2 values (' 2017-01-28         ');
+insert into test2 values (' 2017-01-29         ');insert into test2 values (' 2017-01-30         ');insert into test2 values (' 2017-01-31         ');insert into test2 values (' 2017-02-01         ');
+insert into test2 values (' 2017-02-02         ');insert into test2 values (' 2017-02-03         ');insert into test2 values (' 2017-02-04         ');insert into test2 values (' 2017-02-05         ');
+insert into test2 values (' 2017-02-06         ');insert into test2 values (' 2017-02-07         ');insert into test2 values (' 2017-02-08         ');insert into test2 values (' 2017-02-09         ');
+insert into test2 values (' 2017-02-10         ');insert into test2 values (' 2017-02-11         ');insert into test2 values (' 2017-02-12         ');insert into test2 values (' 2017-02-13         ');
+insert into test2 values (' 2017-02-14         ');insert into test2 values (' 2017-02-15         ');insert into test2 values (' 2017-02-16         ');insert into test2 values (' 2017-02-17         ');
+insert into test2 values (' 2017-02-18         ');insert into test2 values (' 2017-02-19         ');insert into test2 values (' 2017-02-20         ');insert into test2 values (' 2017-02-21         ');
+insert into test2 values (' 2017-02-22         ');insert into test2 values (' 2017-02-23         ');insert into test2 values (' 2017-02-24         ');insert into test2 values (' 2017-02-25         ');
+insert into test2 values (' 2017-02-26         ');insert into test2 values (' 2017-02-27         ');insert into test2 values (' 2017-02-28         ');insert into test2 values (' 2017-03-01         ');
+insert into test2 values (' 2017-03-02         ');insert into test2 values (' 2017-03-03         ');insert into test2 values (' 2017-03-04         ');insert into test2 values (' 2017-03-05         ');
+insert into test2 values (' 2017-03-06         ');insert into test2 values (' 2017-03-07         ');insert into test2 values (' 2017-03-08         ');insert into test2 values (' 2017-03-09         ');
+insert into test2 values (' 2017-03-10         ');insert into test2 values (' 2017-03-11         ');insert into test2 values (' 2017-03-12         ');insert into test2 values (' 2017-03-13         ');
+insert into test2 values (' 2017-03-14         ');insert into test2 values (' 2017-03-15         ');insert into test2 values (' 2017-03-16         ');insert into test2 values (' 2017-03-17         ');
+insert into test2 values (' 2017-03-18         ');insert into test2 values (' 2017-03-19         ');insert into test2 values (' 2017-03-20         ');insert into test2 values (' 2017-03-21         ');
+insert into test2 values (' 2017-03-22         ');insert into test2 values (' 2017-03-23         ');insert into test2 values (' 2017-03-24         ');insert into test2 values (' 2017-03-25         ');
+insert into test2 values (' 2017-03-26         ');insert into test2 values (' 2017-03-27         ');insert into test2 values (' 2017-03-28         ');insert into test2 values (' 2017-03-29         ');
+insert into test2 values (' 2017-03-30         ');insert into test2 values (' 2017-03-31         ');insert into test2 values (' 2017-04-01' );insert into test2 values (' 2017-04-02');
+
+select trial_date , count(user_id) over ( order by trial_date rows between 29 preceding and current_row ) as cummu
+from
+(
+select trial_date,user_id
+from 
+(
+select trial_date,user_id
+from 
+test2 a
+left join trials b
+on a.date_1 = b.trial_date 
+union 
+select date_1, null as user_id
+from 
+test2
+  ) a
+order by trial_date
+) a
+order by trial_date
+

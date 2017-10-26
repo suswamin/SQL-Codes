@@ -1,0 +1,16 @@
+select t1.id, t1.SomeNumt, SUM(t2.SomeNumt) as sum
+from @t t1
+inner join @t t2 on t1.id >= t2.id
+group by t1.id, t1.SomeNumt
+order by t1.id
+SQL Fiddle example
+
+Output
+
+| ID | SOMENUMT | SUM |
+-----------------------
+|  1 |       10 |  10 |
+|  2 |       12 |  22 |
+|  3 |        3 |  25 |
+|  4 |       15 |  40 |
+|  5 |       23 |  63 |

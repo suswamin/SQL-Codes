@@ -1,0 +1,53 @@
+INSERT INTO ROUTE VALUES('SJC','SFO');INSERT INTO ROUTE VALUES('SFO','LA');
+INSERT INTO ROUTE VALUES('SFO','SJC');INSERT INTO ROUTE VALUES('NY','LA');INSERT INTO ROUTE VALUES('LA','NY');  
+
+Solution 1
+ 
+SELECT LEAST(SRC,DEST), GREATEST(SRC,DEST)
+FROM ROUTE
+GROUP BY 1,2;
+ 
+Solution 2
+ 
+SELECT DISTINCT  CITY_A, CITY_B
+FROM
+(
+  SELECT GRP, MIN(CITY) CITY_A, MAX(CITY) CITY_B
+  FROM 
+  (
+  SELECT SRC || '-' || DEST GRP, SRC CITY
+  FROM ROUTE
+  UNION 
+  SELECT SRC || '-' || DEST GRP, DEST CITY
+  FROM ROUTE
+  ) T
+  GROUP BY 1
+) T2;
+-----------------------------------Another Code-------------------------------------------------------
+create table tree
+( 
+  x integer,
+  y integer
+  );
+  
+  insert into tree values (20,20);
+  insert into tree values (20,20);
+  insert into tree values  (24,25);
+  insert into tree values ( 20,21);
+  insert into tree values ( 23,22);
+  insert into tree values ( 22,23);
+  insert into tree values ( 21,20);
+  insert into tree values (25,24);
+  
+  select a.x as ax,a.y as ay 
+from tree a
+inner join 
+tree b
+on a.x=b.y and b.x=a.y 
+where a.x>b.x
+union all 
+select x,y 
+from tree a
+where x=y
+group by x,y
+having count(*)>1

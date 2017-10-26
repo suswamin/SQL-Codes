@@ -1,0 +1,40 @@
+create table login
+( 
+  user_id integer,
+  date_1 date
+  ) ;
+  
+  create table activeuser
+  (
+    user_id integer,
+    date_1 date,
+    revenue integer
+    ) ;
+    
+   insert into login values ( 1,'2017-01-01');   insert into login values ( 1,'2017-01-02');   insert into login values ( 1,'2017-01-03');   insert into login values ( 2,'2017-01-01');
+   insert into login values ( 2,'2017-01-02');   insert into login values ( 2,'2017-01-03');   insert into login values ( 3,'2017-01-01');   insert into login values ( 3,'2017-01-02');
+   insert into login values ( 3,'2017-01-03');   insert into login values ( 4,'2017-01-01');   insert into login values ( 4,'2017-01-02');   insert into login values ( 4,'2017-01-03');
+   insert into login values ( 5,'2017-01-01');   insert into login values ( 5,'2017-01-02');   insert into login values ( 5,'2017-01-03');   
+   
+   insert into activeuser values ( 1,'2017-01-01',50);insert into activeuser values ( 1,'2017-01-01',50);
+   insert into activeuser values ( 1,'2017-01-02',50);insert into activeuser values ( 1,'2017-01-03',50);
+  insert into activeuser values ( 2,'2017-01-01',50);insert into activeuser values ( 2,'2017-01-02',50);
+   insert into activeuser values ( 2,'2017-01-03',50);insert into activeuser values ( 3,'2017-01-01',50);   insert into activeuser values ( 3,'2017-01-02',50);
+   insert into activeuser values ( 3,'2017-01-02',50);insert into activeuser values ( 4,'2017-01-01',50);
+   insert into activeuser values ( 4,'2017-01-02',50);insert into activeuser values ( 4,'2017-01-02',50);
+   
+   Code  
+   select a.date_1, revenue , numberoflogin ,revenue/ numberoflogin
+from
+(select date_1 , count(*) as numberoflogin from
+login
+ group by date_1
+) a
+left join 
+
+(
+  select date_1, sum(revenue) as revenue
+ from activeuser
+group by date_1
+)b
+on a.date_1=b.date_1

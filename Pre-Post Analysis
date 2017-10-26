@@ -19,16 +19,11 @@ inner join
 select "accountId" , "helperDate" ,sum("revenue") as"revenue"
 from reportspg."purchasesInfo" a
 inner join
-reportspg."timeHelpersPst" as b 
-on a."purchaseTimePstId" = b."timeHelperId" 
+"Date" as b 
+on a."purchaseTime" = b."date" 
 and "purchaseTimePstId" is not null 
-and "isRealMoneyUsed" = 't' 
-inner join 
-media."contentVariants2" c
-on a."contentVariantId" = c."contentVariantId"
-group by 1,2
 
 ) b
 on a."accountId" = b."accountId" 
-where "helperDate" between a.“avoddate” and (a."avoddate"+a."differencedate" )
+where "helperDate" between a.“mindate” and (a."mindate"+a."differencedate" )
 group by 1

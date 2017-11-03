@@ -1,0 +1,250 @@
+"Identify customers active for 30 days .If a customers starts a trial 
+then he is valid for 30 days after which he can get activated by paying which is stored in
+a different table. Activation table will also have customers who can get activated without starting 
+the trial.For a day get the number customers who is active . - 30 days is what the customers will be active
+You have to use activation table too because there will be customers who is not in trial.
+For this we need to use the complete calendar table"
+
+create table trials 
+( 
+  user_id integer,
+  trial_date date
+  ) ;
+  
+  insert into trials values ( 10, '2017-01-01');
+  insert into trials values ( 520, '2017-01-02');
+  insert into trials values (100,'2017-01-20');
+  insert into trials values (21, '2017-02-02');
+  insert into trials values (11, '2017-02-04');
+  insert into trials values ( 4, '2017-02-05');
+  insert into trials values (321,'2017-03-15');
+;
+  
+create table activation 
+(
+user_id integer,
+activation_date date,
+cancellation_date date
+) ;
+
+
+create table test2 
+( date_1 date);
+
+insert into test2 values (' 2017-01-01         ');insert into test2 values (' 2017-01-02         ');insert into test2 values (' 2017-01-03 ');insert into test2 values (' 2017-01-04');
+insert into test2 values (' 2017-01-05         ');insert into test2 values (' 2017-01-06         ');insert into test2 values (' 2017-01-07         ');insert into test2 values (' 2017-01-08         ');
+insert into test2 values (' 2017-01-09         ');insert into test2 values (' 2017-01-10         ');insert into test2 values (' 2017-01-11         ');insert into test2 values (' 2017-01-12         ');insert into test2 values (' 2017-01-13         ');insert into test2 values (' 2017-01-14         ');insert into test2 values (' 2017-01-15         ');insert into test2 values (' 2017-01-16         ');insert into test2 values (' 2017-01-17         ');insert into test2 values (' 2017-01-18         ');insert into test2 values (' 2017-01-19         ');insert into test2 values (' 2017-01-20         ');
+insert into test2 values (' 2017-01-21         ');insert into test2 values (' 2017-01-22         ');insert into test2 values (' 2017-01-23         ');insert into test2 values (' 2017-01-24         ');
+insert into test2 values (' 2017-01-25         ');insert into test2 values (' 2017-01-26         ');insert into test2 values (' 2017-01-27         ');insert into test2 values (' 2017-01-28         ');
+insert into test2 values (' 2017-01-29         ');insert into test2 values (' 2017-01-30         ');insert into test2 values (' 2017-01-31         ');insert into test2 values (' 2017-02-01         ');
+insert into test2 values (' 2017-02-02         ');insert into test2 values (' 2017-02-03         ');insert into test2 values (' 2017-02-04         ');insert into test2 values (' 2017-02-05         ');
+insert into test2 values (' 2017-02-06         ');insert into test2 values (' 2017-02-07         ');insert into test2 values (' 2017-02-08         ');insert into test2 values (' 2017-02-09         ');
+insert into test2 values (' 2017-02-10         ');insert into test2 values (' 2017-02-11         ');insert into test2 values (' 2017-02-12         ');insert into test2 values (' 2017-02-13         ');
+insert into test2 values (' 2017-02-14         ');insert into test2 values (' 2017-02-15         ');insert into test2 values (' 2017-02-16         ');insert into test2 values (' 2017-02-17         ');
+insert into test2 values (' 2017-02-18         ');insert into test2 values (' 2017-02-19         ');insert into test2 values (' 2017-02-20         ');insert into test2 values (' 2017-02-21         ');
+insert into test2 values (' 2017-02-22         ');insert into test2 values (' 2017-02-23         ');insert into test2 values (' 2017-02-24         ');insert into test2 values (' 2017-02-25         ');
+insert into test2 values (' 2017-02-26         ');insert into test2 values (' 2017-02-27         ');insert into test2 values (' 2017-02-28         ');insert into test2 values (' 2017-03-01         ');
+insert into test2 values (' 2017-03-02         ');insert into test2 values (' 2017-03-03         ');insert into test2 values (' 2017-03-04         ');insert into test2 values (' 2017-03-05         ');
+insert into test2 values (' 2017-03-06         ');insert into test2 values (' 2017-03-07         ');insert into test2 values (' 2017-03-08         ');insert into test2 values (' 2017-03-09         ');
+insert into test2 values (' 2017-03-10         ');insert into test2 values (' 2017-03-11         ');insert into test2 values (' 2017-03-12         ');insert into test2 values (' 2017-03-13         ');
+insert into test2 values (' 2017-03-14         ');insert into test2 values (' 2017-03-15         ');insert into test2 values (' 2017-03-16         ');insert into test2 values (' 2017-03-17         ');
+insert into test2 values (' 2017-03-18         ');insert into test2 values (' 2017-03-19         ');insert into test2 values (' 2017-03-20         ');insert into test2 values (' 2017-03-21         ');
+insert into test2 values (' 2017-03-22         ');insert into test2 values (' 2017-03-23         ');insert into test2 values (' 2017-03-24         ');insert into test2 values (' 2017-03-25         ');
+insert into test2 values (' 2017-03-26         ');insert into test2 values (' 2017-03-27         ');insert into test2 values (' 2017-03-28         ');insert into test2 values (' 2017-03-29         ');
+insert into test2 values (' 2017-03-30         ');insert into test2 values (' 2017-03-31         ');insert into test2 values (' 2017-04-01' );insert into test2 values (' 2017-04-02');
+
+select trial_date , count(user_id) over ( order by trial_date rows between 29 preceding and current_row ) as cummu
+from
+(
+select trial_date,user_id
+from 
+(
+select trial_date,user_id
+from 
+test2 a
+left join trials b
+on a.date_1 = b.trial_date 
+union 
+select date_1, null as user_id
+from 
+test2
+  ) a
+order by trial_date
+) a
+order by trial_date
+
+
+---------------------------------Activer users ArPu - Revenue / number of login -------------------------------
+create table login
+( 
+  user_id integer,
+  date_1 date
+  ) ;
+  
+  create table activeuser
+  (
+    user_id integer,
+    date_1 date,
+    revenue integer
+    ) ;
+    
+   insert into login values ( 1,'2017-01-01');   insert into login values ( 1,'2017-01-02');   insert into login values ( 1,'2017-01-03');   insert into login values ( 2,'2017-01-01');
+   insert into login values ( 2,'2017-01-02');   insert into login values ( 2,'2017-01-03');   insert into login values ( 3,'2017-01-01');   insert into login values ( 3,'2017-01-02');
+   insert into login values ( 3,'2017-01-03');   insert into login values ( 4,'2017-01-01');   insert into login values ( 4,'2017-01-02');   insert into login values ( 4,'2017-01-03');
+   insert into login values ( 5,'2017-01-01');   insert into login values ( 5,'2017-01-02');   insert into login values ( 5,'2017-01-03');   
+   
+   insert into activeuser values ( 1,'2017-01-01',50);insert into activeuser values ( 1,'2017-01-01',50);
+   insert into activeuser values ( 1,'2017-01-02',50);insert into activeuser values ( 1,'2017-01-03',50);
+  insert into activeuser values ( 2,'2017-01-01',50);insert into activeuser values ( 2,'2017-01-02',50);
+   insert into activeuser values ( 2,'2017-01-03',50);insert into activeuser values ( 3,'2017-01-01',50);   insert into activeuser values ( 3,'2017-01-02',50);
+   insert into activeuser values ( 3,'2017-01-02',50);insert into activeuser values ( 4,'2017-01-01',50);
+   insert into activeuser values ( 4,'2017-01-02',50);insert into activeuser values ( 4,'2017-01-02',50);
+   
+   Code  
+   select a.date_1, revenue , numberoflogin ,revenue/ numberoflogin
+from
+(select date_1 , count(*) as numberoflogin from
+login
+ group by date_1
+) a
+left join 
+
+(
+  select date_1, sum(revenue) as revenue
+ from activeuser
+group by date_1
+)b
+on a.date_1=b.date_1
+
+--------------------------------------------------Circular Reference -------------------------------------
+
+INSERT INTO ROUTE VALUES('SJC','SFO');INSERT INTO ROUTE VALUES('SFO','LA');
+INSERT INTO ROUTE VALUES('SFO','SJC');INSERT INTO ROUTE VALUES('NY','LA');INSERT INTO ROUTE VALUES('LA','NY');  
+
+Solution 1
+ 
+SELECT LEAST(SRC,DEST), GREATEST(SRC,DEST)
+FROM ROUTE
+GROUP BY 1,2;
+ 
+Solution 2
+ 
+SELECT DISTINCT  CITY_A, CITY_B
+FROM
+(
+  SELECT GRP, MIN(CITY) CITY_A, MAX(CITY) CITY_B
+  FROM 
+  (
+  SELECT SRC || '-' || DEST GRP, SRC CITY
+  FROM ROUTE
+  UNION 
+  SELECT SRC || '-' || DEST GRP, DEST CITY
+  FROM ROUTE
+  ) T
+  GROUP BY 1
+) T2;
+------------------------------------Cumulative SUM---------------------------------------------------------------
+select t1.id, t1.SomeNumt, SUM(t2.SomeNumt) as sum
+from @t t1
+inner join @t t2 on t1.id >= t2.id
+group by t1.id, t1.SomeNumt
+order by t1.id
+SQL Fiddle example
+
+Output
+
+| ID | SOMENUMT | SUM |
+-----------------------
+|  1 |       10 |  10 |
+|  2 |       12 |  22 |
+|  3 |        3 |  25 |
+|  4 |       15 |  40 |
+|  5 |       23 |  63 |
+---------------------------------------------
+---------------------------------------------BST :Tree traversing---------------------------------------------------
+
+https://www.hackerrank.com/challenges/binary-search-tree-1/problem
+
+http://www.sqlfiddle.com/#!15/de50d/51
+
+with base_cte
+as (
+select node ,nodes from 
+(
+select distinct node ,
+case when parent is null then 'parents' end as nodes
+from tree
+) a
+where nodes is not null
+union 
+select 
+distinct a.node, 
+case when a.node=b.parent then 'inner' end as nodes
+from
+(
+  select node,parent from
+   tree
+  ) a
+    join 
+    (select node ,parent from 
+     tree
+       ) b 
+ on a.node=b.parent
+ where a.parent is not null
+ ) 
+ select node , 'leaf' as node  from tree 
+ where node not in ( select node from base_cte) 
+ union 
+ select * from base_cte
+ 
+									*************Another way to do this *******************************
+select distinct node ,
+case when parent is null then 'parent'
+     when node in ( select parent from tree) then 'inner' 
+     else 'leaf' end 
+  from tree 
+  order 
+  
+								*********************Another way to solve the problem **********************
+  SELECT 
+    N,
+    CASE
+        WHEN M IS NULL THEN 'Leaf'
+        WHEN P IS NULL THEN 'Root'
+        ELSE 'Inner'
+    END AS TypeNode
+FROM (
+    SELECT 
+        DISTINCT hijo.*, padre.P as M
+    FROM BST hijo
+    LEFT JOIN BST padre ON (hijo.N = padre.P)
+) ORDER BY N;
+---------------------------------Symmetric Pairs------------------
+create table tree
+( 
+  x integer,
+  y integer
+  );
+  
+  insert into tree values (20,20);
+  insert into tree values (20,20);
+  insert into tree values  (24,25);
+  insert into tree values ( 20,21);
+  insert into tree values ( 23,22);
+  insert into tree values ( 22,23);
+  insert into tree values ( 21,20);
+  insert into tree values (25,24);
+  
+  select a.x as ax,a.y as ay 
+from tree a
+inner join 
+tree b
+on a.x=b.y and b.x=a.y 
+where a.x>b.x
+union all 
+select x,y 
+from tree a
+where x=y
+group by x,y
+having count(*)>1
+--------------------------------------

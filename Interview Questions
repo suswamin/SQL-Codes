@@ -1,0 +1,203 @@
+jdbc:redshift://data-challenge.cpzsedc9pony.us-west-2.redshift.amazonaws.com:5439/dev
+
+
+import pandas as pd
+import numpy as np
+df1 = pd.read_csv('C:\Users\sswami1\Desktop\daily_revenue.csv')
+df=df1.iloc[:,:6]
+df=df.iloc[:,5:]
+df.quantile([0.1,0.25,0.75])
+
+
+import pandas as pd
+import numpy as np
+df1 = pd.read_csv('C:\Users\sswami1\Desktop\daily_revenue_1.csv')
+df=df1.iloc[:,:6]
+print df
+#df=df.iloc[:,5:]print df
+'''
+list1=[]
+a=[]
+for x in range(len(df)):
+    list=df.iloc[x]
+    a.append(list)
+print a[1]
+    
+print df.iloc[0]#df1=df.quantile([0.1,0.25,0.75])
+#list1=[0.25,]
+#print df1.iloc[0]'''
+
+
+I am a senior decision scientist for Mu Sigma consulting company .
+ Implementing various statistical technique,statistical Models,ML techniques, Models , 
+ more often than not start with First principle and develop from there. Lot of projects working across different teams not just work in sylo, 
+ Worked on open software R/Python /Postgres / Mahout. Have lead and worked as individual 
+ contributor in analytics project in Retail , Retail Pharma , Pharma and currently.
+Usually always thinking what is next step always ready to develop analytics road map.
+==================================================================================================================================================
+
+KOL identification  :
+
+    Created Influencer Physician Network product, identify the key opinion leaders in a therapeutic area across the world using Network algorithms. 
+•	Designed and analyzed KOL Identification model. Focused on full life cycle product development, modelling/analyzing, data cleansing/disambiguation of Physician data, interpreting large scale data 
+•	Clustering techniques to identify physician clusters in a therapeutic area 
+•	Successfully developed predictive model that are currently used by top pharma companies. 
+o	Created model using different regression technique to find the next rising star(movers and shakers)  in scientific community. Model increased in identifying next physician
+o	Model was created using Social network metrics - Betweenness , Closeness Algorithm, Eigen vector algorithms, Reach analysis, Bonacich Power Social Network algotithm 
+•	Created innovative solutions for faster data cleansing operations which reduced the overall production time by 60%. Developed in-house tools, mapping tools for data cleansing
+•	Spearheaded media leader identification process – End- to end proc====ess from designing, implementing and testing the model
+o	Designed /analyzed and recommended and implemented the overlap analysis across different community
+o	Canned the whole analysis into a successful project.
+•	Created and reviewed key documents and reports which were embedded in the form of actionable client presentations
+
+Logistic Regression, Clustering Techniques, Business Analyst, Data mining, Graph algorithms,VBA
+
+=====================================================================================================================================
+Customer Obsession 
+
+--innovation , team spirit , Leadership 
+Situation : In consulting world , customers here are business managers folks  and mostly often than not they have very muddy questions , something they need answers may be interconnected problems . 
+When do the customer churn. 
+Task : First is understand what the question is : by asking series of business questions they would like to achieve . End 
+Action : Helped them structure the question aand thereby identified the problem to solve.
+Results : Identified the methodology / technique helped in identified the metric (to forecast the churn of the customers). 
+======================================================================================================================================
+
+Ownership  
+
+Dont sacrifice long term values for short-term results . 
+
+From the customer obsession .
+
+Situation : there was an email floating around from President of the business , for about a week and wanted the presentation in a 2 days time .   
+Task : Is to create a one pager about the business , identify new KPI's for business.  
+Action:  Took the responsibility in identifying the metrics , wrote the code and created the one pager.
+Results : Results is more analysis around the business. 
+
+=======================================================================================================================================
+Invent and simplify 
+
+Simplication :  
+Situation : No process to map physician by name whch took long time to clean the data . The final product helpe in pharma company for email marketig to physicians.
+Stumbled upon a pattern where there was 90% probability  
+Task :First does it satisfy across all therapeutic areae
+Action : Tested across different therapeutic .
+Result : Cenceptualize in to a tool used by the pharma companies to map the names.
+=======================================================================================================================================
+Are right , A lot 
+
+Environment makes a lot of differences , culture . Culture Many instances where we are barinstorming any project . there are situation my manager 
+has accepted better method .  What helped was the environment , woked in an environment where people are open to new suggestions and that promotes work as team.
+
+
+============================================================================================================================================
+
+Learn and Be curious 
+
+Always would like to push myself to uncomfortable situation . Learning is very important for me . I will ensure I will keep learning . 
+Working dynamic environemt ranging from younger kids new out of school to VP for different projects. Got to be innovative when you have clients ranging from VP , president to 
+new younger kids from school , learning new things and being updated is very important be it technical or powepoint session or new concepts  .
+Action :  Achieve by attending brown bag session / learning sessions 
+Situation :No reason to learn python was curious to learn about Python while it was still in nascent stage , After 3 years i have to work on python API , 
+it came handy . 
+All hands. We used to discuss , focus on learning was not has strog .
+
+
+=============================================================================================================================================
+
+
+Hire and develop the best :
+I am in consulating organization . Long term developing a team member is never an opportunity because always the rotation of team members .Whatever time was there always developed the skills 
+or identify the skills that is important to complete the project.
+Hiring : Being consulting I have to do Internal networking , One of the metric which I will be evaluated is KRA ( Key result area) 
+external recruiting . I do lunch and learn , yI have to network internal / know what projects 
+Hiring is internal and external : Asset is your team , KRA : Key reulst area, one of my KRA is utilization , I make it a point who can be stffed into my project , which project I can be staffed into .
+   
+   
+==============================================================================================================================================
+Insist on High standard :
+Situation : Client is big retail , I manage $2 million engagement. One mistake has a lot of impact on credibility , trust from the customers.Always there is what is next , 
+new ideas , next analytics road map 
+Task : Make sure the deliverables are client sharable ready
+Actions :  .Use git hub , comments on the codes , readable codes .
+Results:
+comments , uploading latest codes to github , no story in the deck , one point spread across multiple ppt .
+
+===============================================================================================================================================
+
+Think big :
+
+Next opinion leader : Start engaging with the physicians . 
+Think big : Try to think of dart shelf optimization tool. In shelf optimization 100% art , no science , provide mathematical and how they can use it . 
+Did not trust search algorithm , using long historical data .Hence that algorithkm was not being used .
+100 % confident , I will be able to 
+In cosnulting , always start with current situation and expected .
+ Always strive towards the expected situation ,how to add values to the customers at each step while the journey is achieving towards the final goals 
+ work towards what is next , develop next road map and present new ideas to the stakeholders. This breeds inquisitiveness in the customers is appreciated.
+ Even If I dont win , i dont want to be not nimble , I want to continue and keep thinking big 
+
+=================================================================================================================================================
+Bias for Action: Speed matters , many decisions and actions are reversible 
+Specialized dart , make assumptions, assume data and move forward .Could be that data is sufficient , also discovery phase of the business , could be 
+===============================================================================================================================================
+Frugality :
+ In consulting business engagemnets are usually to solve the problems that has never been solved or the team does not have prior experience in solving the problems.
+In a consuting set up Division of labor , identify strength and weekness for each team member , . Since I was in consultancy set up .
+ 
+ ==========================================================================================================================================
+ 
+ Earn Trust
+  -----------
+  
+  Box plot , scatter plot , residuals : for data science 
+  
+  GIS team : More 
+  Situation : Data engineer becoming intelligence 
+ Task : What is the 
+ Action : Felt to the next level . UV team conducted 3 2 hr workshop in a month . Ideas was to spread the knowledge . 
+ Results : Brought you on multiple initiatives  important , built a great rapport , always ready to listen to me .
+ 
+ ==============================================================================================================================================
+ 
+ Discussing and brain storming and dicussing new ideas years have thought me very 
+ Work in a team , trying a break solution down and get the answer , hunting down the answer. Have to be open and go into the others brain .
+ excellence : Its from the Junion to CXO , good suggestions it was grately appreciated.
+ ===============================================================================================================================
+ dive deep
+ -------------------------------------------------------------------------------------
+ Since every deliverable is important because in consulting world qc , presentation , powerpoint , format of the deliverables whether its client deliverables. 
+ Dive deep : LNX research deliver results , 
+ Analytics 1 year , 2year 
+  
+ ================================================================================================================================
+  Have Backbone; Disagree and Commit
+ ===================================================================
+ From the project : Multiple situation where we need to disagree from the original analysis , not on what is happening currently in the business but rather 
+ Customer behavior keeps changing , difficult to do forecasting. Disagree from the orignal analysis and commit to the new analysis .
+ Also , these are varied with respect to changes in the original scope of the project.
+ ===============================================================================================
+Deliver results : 
+Situation : Shelf optimization the tool was ranking items in the manual shelf. It was a huge uphill task , we delivered before testing.
+Task : Deliver the results, identify different KPI , different systems 
+Action:
+Results: 
+ Significance achievement : 4 months , delivered in 3 months . Things fell apart , API from omniture , but used discover , quick solutions.
+ Do whatever it takes . Good rating system , IMDB api , talking about rentention never did it .
+  
+ Number one traits of analytics professional  , have to actionable insight , recommendation , result  Every analysis that we do every day is result, has to have actionable insight and recommendation .
+ =================================================================================================
+Email marketing identify customers who have the propensity to buy items in 30 - 60 days and also identify items recommend to customers . 
+No models was used to recommend items for new users items were recommended based on look alike models based on category . models was based on 30-60- 90 days . 
+Challenges : SAS not installed in same environment as with the data . So as to move the data from one system to the other. While the model takes only few hrs to run . The whole processof 
+of moving the data took close to 4 days . Models were not created at sub category at sub category . 
+
+Customer cohort analyssis :
+Objective of the analysis while the company usually forecast on the revenue. No models were developed to forecast for customers . Cohorts were developed to forecast on the retention and churn of the 
+customers . This was developed for a content based company, helped to undestand the customer retentio  for avod product.from the above analysis : Retention : developed a techniques for A?B testing .
+when is the approprite date when the customer should be receiving the alert/email to bring them back to 
+  
+ ====================================================================================================================================
+ 
+ 
+ 2 question on Customer obsession:
+ S

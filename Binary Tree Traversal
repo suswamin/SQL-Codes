@@ -33,7 +33,7 @@ from
  union 
  select * from base_cte
  
-									*************Another way to do this *******************************
+		*************Another way to do this *******************************
 select distinct node ,
 case when parent is null then 'parent'
      when node in ( select parent from tree) then 'inner' 
@@ -41,7 +41,7 @@ case when parent is null then 'parent'
   from tree 
   order 
   
-								*********************Another way to solve the problem **********************
+		*********************Another way to solve the problem **********************
   SELECT 
     N,
     CASE

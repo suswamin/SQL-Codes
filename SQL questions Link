@@ -3,7 +3,31 @@ https://stackoverflow.com/questions/47059405/show-rows-by-quantity-of-orders
 Amazon Interview Questions : http://informaticadoubts.blogspot.com/2015/11/sql-test-sample-questions-from-amazon.html
 https://stackoverflow.com/questions/47058998/group-case-statement-on-column-value   - LOOKS COMPLCIATED BUT NOT.
 Done : https://stackoverflow.com/questions/47058931/sql-exist-clause-is-always-true  - Done. Why AND does not work dont know . Have to ask.
+======================================================================================================================================
 Done with Sashis help:https://stackoverflow.com/questions/47058779/selecting-winner-based-on-2-player-data
+select match_date ,b.names, c.names
+from 
+(
+select match_date,
+case when results <> player1 then player2 else player1 end as winner,
+case when results<>player1 then player1 else player2 end as loser
+from 
+wm_ad_hoc.games 
+) a
+left join 
+(
+select names , id
+from wm_ad_hoc.players
+) b
+on a. winner = b.id
+left join 
+( 
+select names , id
+from wm_ad_hoc.players
+) c
+on c.id = a.loser
+
+----------------------------------------------------------------------------------------------------------------------------
 https://stackoverflow.com/questions/47055847/sql-find-parents-grandparents-of-specific-child
 Done : https://stackoverflow.com/questions/47053811/sql-query-for-concatinating-current-row-value-with-previous-row-values 
 https://stackoverflow.com/questions/47049408/sql-query-to-get-customers-yearly-net-amount-and-year-to-year-growth-percentage

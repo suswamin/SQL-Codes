@@ -1,0 +1,51 @@
+create table recursive1
+( 
+  rn integer,
+  id integer,
+  name varchar(30)
+  ) ;
+  
+  insert into recursive1 values ( 1,1,'p');
+  insert into recursive1 values ( 1,2,'q');
+  insert into recursive1 values ( 1,3,'s');
+ insert into recursive1 values  ( 2,1,'l');
+  insert into recursive1 values  ( 2,2,'k');
+ 
+  =========================================================
+  
+with recursive output( rn,id,name,results)
+as
+( 
+select rn,id,name,
+concat (lagg,name) as results
+from
+(
+select rn,id,name,
+lag(name) over (partition by rn order by rn) as lagg
+from recursive1
+where id<3
+  ) a
+union all 
+select a.rn ,a.id, a.name ,
+concat(b.results,a.name) as results
+  from recursive1 a
+  join 
+  output b
+  on a.id=b.id+1
+  and a.rn=b.rn
+  where a.id>1
+  ) 
+  select inter.rn,inter.id,inter.results
+  from 
+  ( 
+  select * from output
+  group by rn,id,name,results
+  order by id desc, rn 
+   ) inter
+   join 
+   (
+     select rn,max(id) as id from output
+     group by rn 
+     ) inter2 on inter.id=inter2.id and inter.rn=inter2.rn
+     group by inter.rn,inter.id,inter.results
+   
